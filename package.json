@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently --kill-others \"cd assessment-todo-backend && npm run dev\" \"cd assessment-todo-frontend && npm run dev\""
+    "prestart": "npm install",
+    "start": "concurrently --kill-others \"cd assessment-todo-backend && npm install && npm run dev\" \"cd assessment-todo-frontend && npm install && npm run dev\""
   },
   "author": "",
   "license": "ISC",
