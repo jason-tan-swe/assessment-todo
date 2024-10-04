@@ -13,7 +13,11 @@ export default {
         "created": {
             "type": "string",
             "examples": ["2021-11-30T23:39:27.060Z"] 
+        },
+        "isCompleted": {
+            "type": "boolean",
+            "default": false
         }
     },
-    "required": ["todoID", "userID", "name", "created"]
+    "required": ["todoID", "userID", "name", "created", "isCompleted"]
 };

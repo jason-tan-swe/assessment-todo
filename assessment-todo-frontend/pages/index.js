@@ -1,14 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Colours, Typography } from '../definitions';
 import Button from '../components/Button';
 import PageLayout from '../components/PageLayout';
-
+import { useRouter } from 'next/router';
 
 const Index = () => {
+    const router = useRouter();
+    const handleLogout = () => {
+        document.cookie = "todox-session=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
+        router.push("/");
+    }
+
     return (
         <PageLayout title="Dashboard">
+            <Button text="Logout" onClick={handleLogout} size="large" variant="primary" />
             <Container>
                 <div className="content">
                     <img className="logo" src="/img/todox-logo-black.svg" />

@@ -77,6 +77,11 @@ const ButtonElement = styled.button`
                     background-color: ${Colours.BLACK_LIGHTEST_0};
                     color: ${Colours.BLACK};
                 `;
+            } else if (props.variant === "success") {
+                return `
+                    background-color: ${Colours.SUCCESS_LIGHTER};
+                    color: ${Colours.SUCCESS_DARK};
+                `;
             }
         }
     }
@@ -104,8 +109,11 @@ const ButtonElement = styled.button`
                     return `
                         background-color: ${Colours.BLACK_LIGHTEST_1};
                     `;
+                } else if (props.variant === "success") {
+                    return `
+                        background-color: ${Colours.SUCCESS_LIGHTER};
+                    `;
                 }
-            }
         }
     }
 
@@ -128,7 +136,11 @@ const ButtonElement = styled.button`
                 }
                 else if (props.variant === "neutral-light") {
                     return `
-                        background-color: ${Colours.BLACK_LIGHTEST_1};
+                        background-color: ${Colours.SUCCESS};
+                    `;
+                } else if (props.variant === "success") {
+                    return `
+                        background-color: ${Colours.SUCCESS_LIGHTER};
                     `;
                 }
             }

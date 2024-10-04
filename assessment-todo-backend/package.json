@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Brynnon Picard @ VGen.co",
@@ -18,6 +19,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.1",
     "mongodb": "^6.3.0",
+    "nodemon": "^3.1.7",
     "uuid": "^9.0.0"
   },
   "type": "module"

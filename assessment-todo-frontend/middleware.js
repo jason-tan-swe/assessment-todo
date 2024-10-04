@@ -3,10 +3,15 @@ import config from './config';
 import apiFetch from './functions/apiFetch';
 import getAuthHeaders from './functions/getAuthHeaders';
 
+// ADD PROTECTED ROUTES HERE
+const PROTECTED_ROUTES = ['/', '/create', '/todos'];
+function isProtectedRoute(pathname) {
+    return PROTECTED_ROUTES.includes(pathname);
+}
 
 export async function middleware(req, event) {
     // Prevent users that aren't signed in from accessing certain protected pages
-    if (req.nextUrl.pathname === '/' || req.nextUrl.pathname === '/create') {
+    if (isProtectedRoute(req.nextUrl.pathname)) {
         try {
             let response = await apiFetch("/user/session", {
                 headers: getAuthHeaders(req)

@@ -9,9 +9,10 @@ import InputField from '../components/InputField';
 import apiFetch from '../functions/apiFetch';
 import { useDispatch, useSelector } from 'react-redux';
 import Alert from '../components/Alert';
-
+import { useRouter } from 'next/router';
 
 const Create = () => {
+    const router = useRouter();
     const [isSaving, setIsSaving] = useState(false);
     const todoState = useSelector((state) => state.todo);
     const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Create = () => {
 
     return (
         <PageLayout title="Create todo">
+            <Button text="Back" size="large" variant="primary" onClick={() => router.back()} />
             <Container>
                 <div className="content">
                     <h1>Create todo</h1>
