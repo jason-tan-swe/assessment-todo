@@ -4,12 +4,25 @@ import styled from 'styled-components';
 import Button from '../components/Button';
 import PageLayout from '../components/PageLayout';
 import { useRouter } from 'next/router';
+import apiFetch from '../functions/apiFetch';
 
 const Index = () => {
     const router = useRouter();
-    const handleLogout = () => {
-        document.cookie = "todox-session=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
-        router.push("/");
+    const handleLogout = async () => {
+        try {
+            const response = await apiFetch("/user/session", {
+                method: "DELETE"
+            });
+            if (response.status === 200) {
+                router.push("/");
+            }
+            else {
+                alert("Failed to log out. Please try again.");
+            }
+        } catch (err) {
+            alert("Failed to log out. Please try again.");
+            console.error(err);
+        }
     }
 
     return (
