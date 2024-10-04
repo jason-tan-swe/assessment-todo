@@ -22,6 +22,7 @@ const TodoListItem = ({ todo, onChange }) => {
     const [todoName, setTodoName] = useState(todo.name);
     const [isChecked, setIsChecked] = useState(todo.isCompleted);
 
+    // When checkbox is clicked, update the item `isCompleted` status in the database
     const handleCheckboxChange = async () => {
         setIsChecked(!isChecked);
         try {
@@ -45,6 +46,7 @@ const TodoListItem = ({ todo, onChange }) => {
             dispatch(updateTodoError({ error: "Sorry! We failed to complete your task. Please try again later." })); 
         }
     };
+    // When list item is being finished editing, update the item name
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -70,6 +72,7 @@ const TodoListItem = ({ todo, onChange }) => {
             setIsEditing(false);
         }
     };
+    // When list item is deleted
     const handleDelete = async () => {
         try {
             const response = await apiFetch(`/todo/${todo.todoID}`, {
@@ -92,7 +95,7 @@ const TodoListItem = ({ todo, onChange }) => {
     }
 
     return (
-        <Container>
+        <FormContainer onSubmit={handleSubmit}>
             <div className="inputs">
                 <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
                 {isEditing ?
@@ -101,16 +104,14 @@ const TodoListItem = ({ todo, onChange }) => {
                 }
             </div>
             <div className="item-buttons">
-                <Form onSubmit={handleSubmit} className="form-buttons">
-                    {isEditing ? <Button text="Confirm" type="submit" size="small" variant="neutral-light" required  /> : <Button type="button" onClick={handleEdit} text="Edit" size="small" variant="primary" />}
-                </Form>
+                {isEditing ? <Button text="Confirm" type="submit" size="small" variant="neutral-light" required  /> : <Button type="button" onClick={handleEdit} text="Edit" size="small" variant="primary" />}
                 <Button text="Delete" size="small" variant="primary" onClick={handleDelete} />
             </div>
-        </Container>
+        </FormContainer>
     );
 }
 
-const Container = styled.li`
+const FormContainer = styled(Form)`
     display: flex;
     justify-content: space-between;
     align-items: center;

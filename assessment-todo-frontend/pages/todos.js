@@ -10,16 +10,7 @@ import TodoListItem from '../components/List/TodoListItem';
 import Alert from '../components/Alert';
 import { useRouter } from 'next/router';
 import List from '../components/List';
-
-const sortByMostRecentDateFirst = (a, b) => {
-    if (a.created > b.created) {
-        return -1;
-    }
-    else if (a.created < b.created) {
-        return 1;
-    }
-    return 0;
-}
+import { sortByMostRecentDateFirst } from '../functions/sorting';
 
 const Todos = () => {
     // Redux State Hooks
@@ -111,21 +102,6 @@ const Container = styled.div`
         .logo {
             height: 8.125rem;
             width: 14.625rem;
-        }
-
-        .noLinkStyling {
-            text-decoration: none;
-        }
-
-        .buttons {
-            > * {
-                display: block;
-                margin-bottom: 0.75rem;
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
         }
     }
 `;
