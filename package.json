@@ -1,0 +1,14 @@
+{
+  "name": "vgen-takehome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"cd assessment-todo-backend && npm run dev\" \"cd assessment-todo-frontend && npm run dev\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
